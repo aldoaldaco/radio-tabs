@@ -1,0 +1,28 @@
+{
+  "name": "radio-tabs",
+  "version": "1.0.0",
+  "description": "Display a list of navigation tabs.",
+  "keywords": [
+    "responsive",
+    "tabs",
+    "navigation"
+  ],
+  "ignore": [],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "iron-icon": "PolymerElements/iron-icon#^2.0.0"
+  },
+  "devDependencies": {
+    "cells-sass": "^2.0.0",
+    "cells-demo-helper": "^12.0.0",
+    "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",
+    "web-component-tester": "^6.0.0",
+    "paper-input": "PolymerElements/paper-input#^2.0.0",
+    "webcomponentsjs": "^1.0.0",
+    "iron-pages": "PolymerElements/iron-pages#^2.0.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^2.0.0"
+  },
+  "main": [
+    "cells-radio-tabs.html"
+  ]
+}

@@ -1,0 +1,75 @@
+<link rel="import" href="../polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="radio-tabs-styles.html">
+<!--
+`<cells-radio-tabs>` displays a list of tabs from its `options` property.
+The `options` property can be an array of strings or an array of objects with an optional `icon` property and a `label` property that will be used as the tab text.
+
+Example with simple options:
+
+```html
+<cells-radio-tabs options='["Home", "Accounts"]'></cells-radio-tabs>
+```
+
+Example with text and icons:
+
+```html
+<cells-radio-tabs options='[{
+  "icon": "coronita:home",
+  "label": "Home"
+}, {
+  "icon": "coronita:alarm",
+  "label": "Alerts"
+}]'></cells-radio-tabs>
+```
+
+## Icons
+
+Since this component uses icons, it will need an [iconset](https://bbva.cellsjs.com/guides/best-practices/cells-icons.html) in your project as an [application level dependency](https://bbva.cellsjs.com/guides/advanced-guides/application-level-dependencies.html). In fact, this component uses an iconset in its demo.
+
+## Styling
+
+The following custom properties and mixins are available for styling:
+
+| Custom Property | Description | Default |
+| :-------------- | :---------- | :------ |
+| --cells-radio-tabs-border-radius | border-radius applied to host | 0 |
+| --cells-radio-tabs-color | Text color | var(--bbva-300, #D3D3D3) |
+| --cells-radio-tabs-item-height | Tab height | 3.4375rem (55px) |
+| --cells-radio-tabs-bg-color | background-color applied to host | var(--bbva-white, #fff) |
+| --cells-radio-tabs | Mixin applied to :host | {} |
+| --cells-radio-tabs-option-flex | `flex` property applied to each tab | 1 |
+| --cells-radio-tabs-border-bottom-color | border-bottom color for each tab | var(--bbva-200, #E9E9E9) |
+| --cells-radio-tabs-option | Empty mixin for each tab | {} |
+| --cells-radio-tabs-color-selected | Text color for selected tab | var(--bbva-core-blue, #004481) |
+| --cells-radio-tabs-option-focus | Empty mixin applied to focused tabs | {} |
+| --cells-radio-tabs-tab-hover | Empty mixin applied to tab on :hover | {} |
+| --cells-radio-tabs-selected | Empty mixin for selected tab | {} |
+| --cells-radio-tabs-content | Empty mixin for tab content (icon + text) | {} |
+| --cells-radio-tabs-icon-margin | Margin applied to icon | 0 0.625rem 0 0 (0 10px 0 0) |
+| --cells-radio-tabs-icon | Empty mixin for the icon | {} |
+| --cells-radio-tabs-indicator-bg-color | background-color for the current tab indicator | var(--bbva-core-blue, #004481) |
+
+@demo demo/index.html
+@hero cells-radio-tabs.png
+-->
+<dom-module id="radio-tabs">
+  <template>
+    <style include="radio-tabs-styles radio-tabs-shared-styles"></style>
+
+    <template is="dom-repeat" items="[[options]]" id="options">
+      <label tabindex="0" on-click="_setSelected" on-keydown="_setSelected" on-mouseenter="_onMouseEvent" on-mouseleave="_onMouseEvent">
+        <input type="radio" name$="cells-radio-tabs-[[_uniqueID]]" checked$="[[_computeChecked(selected, index)]]" tabindex="-1">
+        <span class="tab-content">
+          <iron-icon class="icon" hidden$="[[!item.icon]]" icon="[[item.icon]]" style$="width: [[iconSize]]px; height: [[iconSize]]px;"></iron-icon>
+          <span class="label" hidden$="[[_hasLabels]]">[[item]]</span>
+        <span class="label" hidden$="[[!_hasLabels]]">[[item.label]]</span>
+        </span>
+      </label>
+    </template>
+
+    <div id="indicator" class="indicator"></div>
+  </template>
+  <script src="radio-tabs.js"></script>
+</dom-module>

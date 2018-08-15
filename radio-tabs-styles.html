@@ -1,0 +1,81 @@
+<dom-module id="radio-tabs-styles"><template><style>
+  :host {
+    --radio-tabs-border-radius: 0;
+    --radio-tabs-item-width: 100%;
+    display: flex;
+    position: relative;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--radio-tabs-color, #D3D3D3);
+    height: var(--radio-tabs-item-height, 3.4375rem);
+    background-color: var(--radio-tabs-bg-color, #fff);
+    border-radius: var(--radio-tabs-border-radius);
+    box-sizing: border-box;
+    @apply --radio-tabs; }
+
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex: var(--radio-tabs-option-flex, 1);
+    height: 100%;
+    cursor: pointer;
+    border-bottom: 1px solid var(--radio-tabs-border-bottom-color, #E9E9E9);
+    outline: none;
+    @apply --radio-tabs-option; }
+
+  label:focus .tab-content {
+    color: var(--radio-tabs-color-selected, #004481);
+    @apply --radio-tabs-option-focus; }
+
+  label:hover .tab-content {
+    @apply --radio-tabs-tab-hover; }
+
+  input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px; }
+
+  input[checked] + .tab-content {
+    color: var(--radio-tabs-color-selected, #004481);
+    @apply --radio-tabs-selected; }
+
+  .tab-content {
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    @apply --radio-tabs-content; }
+
+  .icon {
+    margin: var(--radio-tabs-icon-margin, 0 0.625rem 0 0);
+    @apply --radio-tabs-icon; }
+
+  #indicator {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: var(--radio-tabs-item-width);
+    height: 0.125rem;
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+    border-radius: var(--radio-tabs-border-radius);
+    background-color: var(--radio-tabs-indicator-bg-color, #004481);
+    @apply --ratio-tabs-indicator; }
+
+  :host(.indicator-hidden) #indicator {
+    opacity: 0; }
+
+  :host([hidden]), [hidden] {
+    display: none; }
+
+  *, *:before, *:after {
+    box-sizing: inherit; }
+
+</style></template></dom-module>
